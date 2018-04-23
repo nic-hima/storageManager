@@ -1,0 +1,58 @@
+version: '3'
+services:
+  db:
+    container_name: springboot-db
+    image: mariadb:10.3
+    stop_grace_period: 60s
+    networks:
+      - spring
+    volumes:
+      - "./db/data:/db"
+      - "./db/data:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_USER: spring
+      MYSQL_PASSWORD: spring
+      MYSQL_DATABASE: spring
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    ports:
+      - "3306"
+
+  api:
+    container_name: spring-api
+    command: mvn spring-boot:run
+    image: maven:3.5-jdk-8-slim
+    working_dir: /usr/src/app/
+    networks:
+      - spring
+    volumes:
+      - ./target:/usr/src/app/target
+      - ./m2cache:/root/.m2 #maven repo cache
+      - ./src:/usr/src/app/src # mount our source
+      - ./pom.xml:/usr/src/app/pom.xml # mount our source
+    ports:
+      - '8080:8080'
+      - '8282:8282'
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.jdbc.Driver
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/spring
+      - SPRING_DATASOURCE_USERNAME=spring
+      - SPRING_DATASOURCE_PASSWORD=spring
+      - SPRING_DATASOURCE_INITIALIZE=false
+      - SPRING_DATASOURCE_DATABASE-PLATFORM=org.hibernate.dialect.MySQL5Dialect
+      - SPRING_DATASOURCE_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5Dialect
+      - SECURITY_IGNORED=/**
+      - MANAGEMENT_SECURITY_ENABLED=false
+      - MANAGEMENT_PORT=8282
+      - MANAGEMENT_INFO_GIT_ENABLED=true
+      - SPRING_CLOUD_KUBERNETES_ENABLED=false
+      - SPRING_JPA_GENERATE-DDL=true
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=create-drop
+volumes:
+#  target:
+#    driver: local
+  cache:
+    driver: local
+networks:
+  spring:
