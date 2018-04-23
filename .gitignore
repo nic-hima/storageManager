@@ -1,5 +1,7 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
+/db
+/m2cache
 
 ### STS ###
 .apt_generated

@@ -48,7 +48,7 @@ services:
       - MANAGEMENT_INFO_GIT_ENABLED=true
       - SPRING_CLOUD_KUBERNETES_ENABLED=false
       - SPRING_JPA_GENERATE-DDL=true
-      - SPRING_JPA_HIBERNATE_DDL-AUTO=create-drop
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
 volumes:
 #  target:
 #    driver: local
