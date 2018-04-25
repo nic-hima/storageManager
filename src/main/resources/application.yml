@@ -1,0 +1,22 @@
+#Using this rather than docker-composer.yml to configure connection to the data source
+#So far no security feature has been implemented -NHima 4/23
+#
+spring:
+  datasource:
+    initialize: false
+    url: jdbc:mysql://db:3306/spring
+    username: spring
+    password: spring
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL5Dialect
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  security:
+    user:
+      password: password
+  management:
+    security:
+      enabled: false
+    port: 8282

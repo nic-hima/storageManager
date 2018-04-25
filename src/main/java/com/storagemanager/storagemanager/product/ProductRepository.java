@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface ProductRepository extends CrudRepository <Product, Long> {
 
-    List<Product> findBysku(long sku);
+    //List<Product> findBysku(long sku);
 
 }

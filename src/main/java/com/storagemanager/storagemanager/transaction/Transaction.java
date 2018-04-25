@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
@@ -15,6 +16,7 @@ import java.util.Date;
  *
  */
 @Entity
+@Table(name = "TRANSACTION")
 public class Transaction {
     @Column(name = "TYPE")
     char type;
@@ -26,6 +28,8 @@ public class Transaction {
     int quantity;
     @Column(name = "TRANS_DATE")
     Date transactionDate;
+
+    protected Transaction() {}
 
     public char getType() {
         return type;

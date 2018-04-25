@@ -33,22 +33,22 @@ services:
     ports:
       - '8080:8080'
       - '8282:8282'
-    environment:
-      - SPRING_PROFILES_ACTIVE=local
-      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.jdbc.Driver
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/spring
-      - SPRING_DATASOURCE_USERNAME=spring
-      - SPRING_DATASOURCE_PASSWORD=spring
-      - SPRING_DATASOURCE_INITIALIZE=false
-      - SPRING_DATASOURCE_DATABASE-PLATFORM=org.hibernate.dialect.MySQL5Dialect
-      - SPRING_DATASOURCE_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5Dialect
-      - SECURITY_IGNORED=/**
-      - MANAGEMENT_SECURITY_ENABLED=false
-      - MANAGEMENT_PORT=8282
-      - MANAGEMENT_INFO_GIT_ENABLED=true
-      - SPRING_CLOUD_KUBERNETES_ENABLED=false
-      - SPRING_JPA_GENERATE-DDL=true
-      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=local
+#      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.jdbc.Driver
+#      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/spring
+#      - SPRING_DATASOURCE_USERNAME=spring
+#      - SPRING_DATASOURCE_PASSWORD=spring
+#      - SPRING_DATASOURCE_INITIALIZE=false
+#      - SPRING_DATASOURCE_DATABASE-PLATFORM=org.hibernate.dialect.MySQL5Dialect
+#      - SPRING_DATASOURCE_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5Dialect
+#      - SECURITY_IGNORED=/**
+#      - MANAGEMENT_SECURITY_ENABLED=false
+#      - MANAGEMENT_PORT=8282
+#      - MANAGEMENT_INFO_GIT_ENABLED=true
+#      - SPRING_CLOUD_KUBERNETES_ENABLED=false
+#      - SPRING_JPA_GENERATE-DDL=true
+#      - SPRING_JPA_HIBERNATE_DDL-AUTO=create
 volumes:
 #  target:
 #    driver: local
