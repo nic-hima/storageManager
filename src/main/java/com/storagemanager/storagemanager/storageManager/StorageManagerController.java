@@ -22,7 +22,8 @@ public class StorageManagerController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String loginForm(Model model)
-    {   model.addAttribute("message", "Login");
+    {
+        model.addAttribute("message", "Login");
         return "loginForm";
     }
 
@@ -46,6 +47,12 @@ public class StorageManagerController {
         }
         response = "success";
         model.addAttribute("message", response);
-        return "hello";
+        return "portalLanding";
+    }
+
+    @RequestMapping(value = "/landing", method = RequestMethod.GET)
+    public String gotoLanding(Model model)
+    {
+        return "portalLanding";
     }
 }

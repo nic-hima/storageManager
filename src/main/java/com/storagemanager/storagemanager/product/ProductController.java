@@ -27,44 +27,54 @@ public class ProductController {
     @Autowired
     ProductRepository productRepository;
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @GetMapping
+    public String returnProducts(Model model)
+    {
+        List<Product> productList = productRepository.findAll();
+        {
+            System.out.println("list is empty");
+        }
+        //model.addAttribute("listOfAllProducts", productRepository.findAll());
+        model.addAttribute("product", new Product());
+        return "products";
+    }
+
+
+/*    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello(HttpServletRequest request, Model model)
     {
         String name = request.getParameter("name");
+        System.out.println(name);
 
-        if (name == null)
+        if (name == "" || name == null)
         {
             name = "hello world";
         }
 
         model.addAttribute("message", name);
-        return "hello";
-    }
+        return "notification";
+    }*/
 
 
-}
-/*
 
-   //@RequestMapping(method = RequestMethod.POST)
-    @PostMapping("/new")
-   //@ResponseStatus(HttpStatus.OK)
-   //@Transactional
-    public ModelAndView createProduct(@Valid Product newProduct, BindingResult result) {
-        ModelAndView modelAndView = new ModelAndView();
-        if (result.hasErrors())
+
+
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    @Transactional
+    public String createProduct(@ModelAttribute(name = "product") Product newProduct, Model model) {
+        if (1==0)
         {
+            String output = "Invalid Form";
             System.out.print("Validation errors while submitting form");
-            modelAndView.setViewName("new");
-            modelAndView.addObject("newProduct", newProduct);
-            return modelAndView;
+            model.addAttribute("message", output);
+            return "notification";
         }
         System.out.print(newProduct.getName()+ " " + newProduct.getSku() + " " + newProduct.getDescription() + "saved successfully\n");
         productRepository.save((newProduct));
-        modelAndView.setViewName("index.html");
-        return modelAndView;
+        return "products";
 
    }
 
-*/
+}
 
 

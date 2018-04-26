@@ -20,7 +20,7 @@ public class TransactionController {
     @Autowired
     TransactionRepository transactionRepository;
 
-    @RequestMapping("/products/{sku}/transactions")
+    @RequestMapping("/products/{sku}/products")
     public Iterable<Transaction> getTransactionsBySKU(@PathVariable long sku) {
         List<Long> skuList = null;
         skuList.add(sku);
