@@ -2,6 +2,7 @@ package com.storagemanager.storagemanager.product;
 
 
 
+import javax.annotation.sql.DataSourceDefinition;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ import javax.persistence.Table;
 public class Product {
 
     @Id
-    @Column(name = "SKU")
+    @Column(name = "SKU", unique = true)
     long sku;
     @Column(name = "DESCRIPTION")
     String description;

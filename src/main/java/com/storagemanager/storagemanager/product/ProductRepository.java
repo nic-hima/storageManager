@@ -11,16 +11,16 @@ import java.util.Optional;
  */
 public interface ProductRepository extends CrudRepository <Product, Long> {
 
+     List<Product>   findAll();
+     List<Product> findBysku(long sku);
 
-    @Override
+    /*@Override
     default List<Product> findAll() {
         return null;
     }
-
+*/
     @Override
     default List<Product> findAllById(Iterable<Long> longs) {
         return null;
     }
-
-
 }

@@ -1,4 +1,4 @@
-package com.storagemanager.storagemanager.inventory;
+package com.storagemanager.storagemanager.productBatch;
 
 
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by NHima on 4/25/18.
  */
-public class InventoryEntry {
+public class ProductBatchEntry {
     int quantity;
     String location;
     Date dateReceived;

@@ -5,16 +5,17 @@
     <title>Landing</title>
 </head>
     <body>
-        <form action="/" method="get">
+        <h1 th:text = "${message}"></h1>
+        <form action="#" th:action="@{/}" method="get">
             <button type="submit" >Logout</button>
         </form>
-        <form action="/order" method="get">
+        <form action="#" th:action="@{/order}" method="get">
             <button type="submit" >Order</button>
         </form>
-        <form action="/products" method="get">
+        <form action="#" th:action="@{/products}" method="get">
             <button type="submit" >Products</button>
         </form>
-        <form action="/inventory" method="get">
+        <form action="#" th:action="@{/inventory}" method="get">
             <button type="submit" >Inventory</button>
         </form>
 

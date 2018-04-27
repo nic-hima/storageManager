@@ -1,0 +1,55 @@
+body {
+    
+ 
+background: radial-gradient(circle, lightblue, blue);
+}
+
+h1 {
+    color: white;
+    margin-left: 20px;
+    text-align: center;
+    text-shadow: 2px 2px black;
+}
+button{
+    background-color: #4083ef;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    text-align: right;
+}
+
+
+table {
+   background-color: white;
+   margin-left:auto; 
+   margin-right:auto;
+   width:700px;
+}
+th {
+    text-align: left;
+    background-color: grey
+    padding-top: 21px;
+    padding-bottom: 21px;
+}
+td {
+    text-align: left;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover {background-color: blue;}
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+}

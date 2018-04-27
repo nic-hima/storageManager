@@ -23,7 +23,7 @@ public class StorageManagerController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String loginForm(Model model)
     {
-        model.addAttribute("message", "Login");
+        model.addAttribute("message", "Storage Manager Login");
         return "loginForm";
     }
 

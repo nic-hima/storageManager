@@ -1,4 +1,5 @@
 package com.storagemanager.storagemanager.product;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.List;
 
 
@@ -31,10 +33,11 @@ public class ProductController {
     public String returnProducts(Model model)
     {
         List<Product> productList = productRepository.findAll();
-        {
-            System.out.println("list is empty");
+        for (Product iteration: productList) {
+            System.out.println(iteration.toString());
+
         }
-        //model.addAttribute("listOfAllProducts", productRepository.findAll());
+        model.addAttribute("listOfAllProducts", productRepository.findAll());
         model.addAttribute("product", new Product());
         return "products";
     }
@@ -59,7 +62,7 @@ public class ProductController {
 
 
 
-    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    @PostMapping
     @Transactional
     public String createProduct(@ModelAttribute(name = "product") Product newProduct, Model model) {
         if (1==0)
@@ -69,8 +72,16 @@ public class ProductController {
             model.addAttribute("message", output);
             return "notification";
         }
-        System.out.print(newProduct.getName()+ " " + newProduct.getSku() + " " + newProduct.getDescription() + "saved successfully\n");
-        productRepository.save((newProduct));
+        System.out.print(newProduct.toString() + " saved successfully\n");
+        productRepository.save(newProduct);
+        System.out.println("Total number of saved products: " + productRepository.count());
+        List<Product> productList = productRepository.findAll();
+        model.addAttribute("listOfAllProducts", productRepository.findAll());
+        model.addAttribute("product", new Product());
+        /*Optional<Product> test = productRepository.findById((Long)newProduct.getSku());
+        if(test.isPresent() ) {
+            System.out.println("Product is present" + test.toString());
+        }*/
         return "products";
 
    }

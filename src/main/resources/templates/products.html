@@ -2,26 +2,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Products</title>
+    <link th:href="@{css/style.css}" rel="stylesheet" media="screen"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <h1>Products</h1>
 </head>
 <body>
-<!--<div th:if="${not #lists.isEmpty(listOfAllProducts)}">-->
-<!--<tr th:each="product : ${listOfAllProducts}">-->
-    <!--<td th:text="${product.sku}">SKU</td>-->
-    <!--<td th:text="${product.name}">Name</td>-->
-    <!--<td th:text="${product.description}">Description</td>-->
-    <!--<td th:text="${product.category}">Category</td>-->
-    <!--<td th:text="${product.wholeSaleCost}">wholeSaleCost</td>-->
-    <!--<td th:text="${product.salePrice}">salePrice</td>-->
-<!--</tr>-->
-
-<!--</div>-->
-<!--<table th:object="${listOfAllProducts}" id="userTable" border="1">-->
-    <!--<tr th:each="user :${listOfAllProducts}">-->
-        <!--<td  th:text="${listOfAllProducts.getName()}"></td>-->
-    <!--</tr>-->
-<!--</table>-->
+<div class="container">
+    <div th:if="${not #lists.isEmpty(listOfAllProducts)}">
+        <h2>Product List</h2>
+        <table>
+            <tr>
+                <th>SKU</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>WholeSale</th>
+                <th>SalePrice</th>
+            </tr>
+            <tr th:each="product : ${listOfAllProducts}">
+            <td th:text="${product.sku}">SKU </td>
+            <td th:text="${product.name}">Name</td>
+            <td th:text="${product.description}">Description</td>
+            <td th:text="${product.category}">Category</td>
+            <td th:text="${product.wholeSaleCost}">wholeSaleCost</td>
+            <td th:text="${product.salePrice}">salePrice</td>
+            </tr>
+        </table>
+    </div>
+</div>
 <!--<form  method="post" action="/products/new" name="Add Product">-->
     <!--<p>SKU: <input type="number" name="sku" /></p>-->
     <!--<p>Name: <input type="text" name="name" /></p>-->
@@ -31,8 +39,8 @@
     <!--<p>SalePrice: <input type="number" name="price" /></p>-->
     <!--<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>-->
 <!--</form>-->
-<h1>Form</h1>
-<form action="#" th:action="@{/products/new}" th:object="${product}" method="post">
+<h2>New Product Form</h2>
+<form action="#" th:action=@{/products}" th:object="${product}" method="post">
     <p>SKU: <input type="text" th:field="*{sku}" /></p>
     <p>Name: <input type="text" th:field="*{name}" /></p>
     <p>Description: <input type="text" th:field="*{description}" /></p>

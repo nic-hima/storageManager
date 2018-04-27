@@ -1,6 +1,4 @@
-package com.storagemanager.storagemanager.transaction;
-
-import org.springframework.web.bind.annotation.CrossOrigin;
+package com.storagemanager.storagemanager.storageTransaction;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,14 +8,14 @@ import java.util.Date;
 
 /**
  * Created by NHima on 4/22/18.
- * POJO of the Transaction Java Object
+ * POJO of the StorageTransaction Java Object
  * Currently only 4 fields, type | sku | quantity | transactionDate, with corresponding getters and setters
  *
  *
  */
 @Entity
 @Table(name = "TRANSACTION")
-public class Transaction {
+public class StorageTransaction {
     @Column(name = "TYPE")
     char type;
 
@@ -29,7 +27,7 @@ public class Transaction {
     @Column(name = "TRANS_DATE")
     Date transactionDate;
 
-    protected Transaction() {}
+    protected StorageTransaction() {}
 
     public char getType() {
         return type;
