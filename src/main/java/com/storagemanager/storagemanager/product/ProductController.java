@@ -1,20 +1,13 @@
 package com.storagemanager.storagemanager.product;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Optional;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -39,6 +32,7 @@ public class ProductController {
         }
         model.addAttribute("listOfAllProducts", productRepository.findAll());
         model.addAttribute("product", new Product());
+        model.addAttribute("deleteProduct", new Product());
         return "products";
     }
 
@@ -64,7 +58,7 @@ public class ProductController {
 
     @PostMapping
     @Transactional
-    public String createProduct(@ModelAttribute(name = "product") Product newProduct, Model model) {
+    public String createProduct(@ModelAttribute(name = "product") Product newProduct, @ModelAttribute(name = "deleteProduct") Product deleteProduct, Model model) {
         if (1==0)
         {
             String output = "Invalid Form";
@@ -86,6 +80,22 @@ public class ProductController {
 
    }
 
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String deleteProduct(@ModelAttribute(name = "deleteProduct") Product deleteProduct, @ModelAttribute(name = "product") Product newProduct, Model model) {
+        String message;
+        Optional<Product> test = productRepository.findById(deleteProduct.sku);
+        if(test.isPresent() ) {
+            System.out.println("Product is present" + test.toString());
+            productRepository.deleteById(deleteProduct.sku);
+            message = "Product of SKU: " + deleteProduct.sku + " was successfully deleted";
+            model.addAttribute("message", message);
+            return "products";
+        }
+        message = "Product of SKU: " + deleteProduct.sku + " was not found";
+        model.addAttribute("message", message);
+        return "products";
+
+    }
 }
 
 

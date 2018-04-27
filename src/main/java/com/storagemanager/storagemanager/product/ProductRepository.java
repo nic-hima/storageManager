@@ -23,4 +23,5 @@ public interface ProductRepository extends CrudRepository <Product, Long> {
     default List<Product> findAllById(Iterable<Long> longs) {
         return null;
     }
+
 }

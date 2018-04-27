@@ -2,10 +2,11 @@
 #So far no security feature has been implemented -NHima 4/23
 #
 spring:
+
   datasource:
     initialize: false
-    url: jdbc:mysql://db:3306/spring
-    username: spring
+    url: jdbc:mysql://localhost:3306/spring
+    username: root
     password: spring
     hibernate:
       dialect: org.hibernate.dialect.MySQL5Dialect
