@@ -35,6 +35,7 @@ public class Product {
     @Column(name = "CATEGORY")
     String category;
 
+
     protected Product() {}
 
     public String getName() {

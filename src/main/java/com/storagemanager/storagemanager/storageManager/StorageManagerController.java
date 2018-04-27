@@ -53,6 +53,7 @@ public class StorageManagerController {
     @RequestMapping(value = "/landing", method = RequestMethod.GET)
     public String gotoLanding(Model model)
     {
+        System.out.println("hello");
         return "portalLanding";
     }
 }
