@@ -4,6 +4,7 @@
 /m2cache
 /pom.xml
 /src/main/resources/application.yml
+
 ### STS ###
 .apt_generated
 .classpath

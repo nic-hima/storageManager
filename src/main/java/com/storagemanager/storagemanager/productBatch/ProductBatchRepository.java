@@ -7,5 +7,5 @@ import java.util.List;
 public interface ProductBatchRepository extends CrudRepository<ProductBatchEntry, Long> {
 
     List<ProductBatchEntry> findAll();
-    List<ProductBatchEntry> findByproductSku(long productSku);
+    List<ProductBatchEntry> findByproductSku(int productSku);
 }

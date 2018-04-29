@@ -40,7 +40,8 @@
     <!--<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>-->
 <!--</form>-->
 <h2>Delete Product Form</h2>
-<form  action="#1" th:action="@{/products/delete}" th:object="${deleteProduct}" method="post">
+<form  action="#" th:action="@{/products/delete}" th:object="${deleteProduct}" method="post">
+    <link th:href="@{css/style.css}" rel="stylesheet" media="screen"/>
     <p>SKU: <input type="text" th:field="*{sku}" /></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
