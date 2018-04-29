@@ -1,17 +1,32 @@
 package com.storagemanager.storagemanager.productBatch;
 
 
+import jdk.Exported;
+
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by NHima on 4/25/18.
  */
+@Entity
+@Table(name = "productBatch")
 public class ProductBatchEntry {
+
+    @Id @GeneratedValue
+    long batchId;
+    @Column(name = "PRODUCTSKU")
+    long productSku;
+    @Column(name = "QUANTITY")
     int quantity;
+    @Column(name = "LOCATION")
     String location;
+    @Column(name = "DATERECEIVED")
     Date dateReceived;
+    @Column(name = "PERISHABLE")
     boolean perishable;
-    int productSku;
+
+    protected ProductBatchEntry() {}
 
     public int getQuantity() {
         return quantity;
@@ -45,7 +60,7 @@ public class ProductBatchEntry {
         this.perishable = perishable;
     }
 
-    public int getProductSku() {
+    public long getProductSku() {
         return productSku;
     }
 
