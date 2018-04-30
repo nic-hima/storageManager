@@ -65,6 +65,14 @@ public class ProductBatchEntry {
         this.productSku = productSku;
     }
 
+    public long getBatchId() {
+        return batchId;
+    }
+
+    public void setBatchId(long batchId) {
+        this.batchId = batchId;
+    }
+
     @Override
     public String toString() {
         return "ProductBatchEntry{" +

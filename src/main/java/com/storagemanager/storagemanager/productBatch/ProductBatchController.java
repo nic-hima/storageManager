@@ -1,16 +1,14 @@
 package com.storagemanager.storagemanager.productBatch;
 import com.storagemanager.storagemanager.product.Product;
-import com.storagemanager.storagemanager.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
+
 
 /**
  * Created by NHima on 4/25/18.
@@ -33,13 +31,13 @@ public class ProductBatchController {
         }
         model.addAttribute("listOfAllProduct", productBatchRepository.findAll());
         model.addAttribute("newProductBatch", new ProductBatchEntry());
-        model.addAttribute("deleteProduct", new ProductBatchEntry());
+        model.addAttribute("deleteProductBatch", new ProductBatchEntry());
         return "productBatch";
     }
 
     @PostMapping
     @Transactional
-    public String createProductBatch(@ModelAttribute(name = "newProductBatch") ProductBatchEntry newProductBatch, @ModelAttribute(name = "deleteProduct") Product deleteProduct, Model model) {
+    public String createProductBatch(@ModelAttribute(name = "newProductBatch") ProductBatchEntry newProductBatch, @ModelAttribute(name = "deleteProductBatch") ProductBatchEntry deleteProductBatch, Model model) {
         System.out.println(newProductBatch.toString());
         if (1==0)
         {
@@ -54,12 +52,29 @@ public class ProductBatchController {
         List<ProductBatchEntry> productList = productBatchRepository.findAll();
         model.addAttribute("listOfAllProductBatches", productBatchRepository.findAll());
         model.addAttribute("newProductBatch", new ProductBatchEntry());
-        /*Optional<Product> test = productRepository.findById((Long)newProduct.getSku());
-        if(test.isPresent() ) {
-            System.out.println("Product is present" + test.toString());
-        }*/
-        return "productBatch";
+        model.addAttribute("deleteProductBatch", new ProductBatchEntry());
 
+        return "productBatch";
     }
 
+    @RequestMapping(value = "/deleteProductBatch", method = RequestMethod.POST)
+    public String deleteProductBatch(@ModelAttribute(name = "deleteProductBatch") ProductBatchEntry deleteProductBatch, @ModelAttribute(name = "productBatchEntry") ProductBatchEntry newProductBatch, Model model) {
+        String message;
+        System.out.println("Product Batch ID:" + deleteProductBatch.batchId);
+        Optional<ProductBatchEntry> test = productBatchRepository.findById(deleteProductBatch.getBatchId());
+        System.out.println(test.toString());
+        if(test.isPresent()) {
+            System.out.println("Product is present" + test.toString());
+            productBatchRepository.deleteById((long) deleteProductBatch.batchId);
+            message = "Product Batch of batch ID: " + deleteProductBatch.batchId + " was successfully deleted";
+            model.addAttribute("message", message);
+        }
+        else{
+            message = "Product of SKU: " + deleteProductBatch.productSku + " was not found";
+            model.addAttribute("message", message);
+        }
+        //return "productBatch";
+        return "redirect:/productBatch";
+
+    }
 }

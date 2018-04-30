@@ -7,12 +7,19 @@
     <h1 th:text = "${message}">Product Batch</h1>
 </head>
 <body>
-
+<h2>Delete Product Batch Form</h2>
+<form  action="#" th:action="@{/productBatch/deleteProductBatch}" th:object="${deleteProductBatch}" method="post">
+    <link th:href="@{css/style.css}" rel="stylesheet" media="screen"/>
+    <p>Batch ID: <input type="text" th:field="*{batchId}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
 <h2>New Product Batch Form</h2>
 <form action="#" th:action="@{/productBatch}" th:object="${newProductBatch}" method="post">
     <p>SKU: <input type="text" th:field="*{productSku}" /></p>
     <p>Quantity: <input type="text" th:field="*{quantity}" /></p>
+
     <p>Location: <input type="text" th:field="*{location}" /></p>
+
     <p>Date Received: <input type="text" th:field="*{dateReceived}" /></p>
     <p>Perishable: <input type="checkbox" th:field="*{perishable}"/></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
