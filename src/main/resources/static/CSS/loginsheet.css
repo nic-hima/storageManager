@@ -1,0 +1,90 @@
+body {  
+     background: rgb(34,161,195);
+     background: linear-gradient(322deg, rgba(34,161,195,1) 0%, rgba(45,99,253,1) 100%); 
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+input[type=text], input[type=password] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    
+}
+button {
+    background-color: #4083ef;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    opacity: 0.8;
+}
+div.container {
+  width: 250px;
+  height: 300px;
+  display: block;
+  background-color: #eee;
+  margin-left: auto;
+  margin-right: auto;
+ }
+
+#loginButton{
+    /*background-color: #4083ef;*/
+    background-color : transparent; 
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 27px;
+}
+#loginButton:hover {
+    opacity: .5;
+}
+
+form {
+  position: relative;
+  z-index: 1;
+ /* background: #FFFFFF;*/
+  background: transparent;
+  max-width: 360px;
+  margin: -70px auto 100px;
+  padding: 45px;
+  text-align: center;
+ /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
+}
+form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+h1{
+  font-size: 60px;
+  color:white;
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+
+
+}

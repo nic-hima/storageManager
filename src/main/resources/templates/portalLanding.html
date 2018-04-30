@@ -3,25 +3,23 @@
 <head>
 
     <title>Landing</title>
-    <link th:href="@{css/style.css}" rel="stylesheet" media="screen"/>
-
+    <link th:href="@{css/landingsheet.css}" rel="stylesheet" media="screen"/>
 </head>
-    <body>
-        <h1>Welcome to the Manager Portal!</h1>
-        <form action="#" th:action="@{/}" method="get">
-            <button type="submit" >Logout</button>
-        </form>
-        <form action="#" th:action="@{/order}" method="get">
-            <button type="submit" >Order</button>
+<body>
+        <form action="#" th:action="@{/transaction}" method="get">
+            <button type="submit" >Transactions</button>
         </form>
         <form action="#" th:action="@{/products}" method="get">
             <button type="submit" >Products</button>
         </form>
-        <form action="#" th:action="@{/inventory}" method="get">
+        <!--<form action="#" th:action="@{/inventory}" method="get">
             <button type="submit" >Inventory</button>
-        </form>
+        </form>-->
         <form action="#" th:action="@{/productBatch}" method="get">
             <button type="submit" >ProductBatch</button>
+        </form>
+        <form action="#" th:action="@{/}" method="get">
+            <button type="submit" >Logout</button>
         </form>
     </body>
 </html>
