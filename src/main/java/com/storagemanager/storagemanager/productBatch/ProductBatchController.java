@@ -35,11 +35,13 @@ public class ProductBatchController {
         model.addAttribute("deleteProductBatch", new ProductBatchEntry());
         model.addAttribute("updateLocation", new ProductBatchEntry());
         model.addAttribute("updateQuantity", new ProductBatchEntry());
+
         return "productBatch";
     }
 
     @PostMapping
     @Transactional
+
     public String createProductBatch(@ModelAttribute(name = "newProductBatch") ProductBatchEntry newProductBatch,  Model model) {
         String message;
         System.out.println(newProductBatch.toString());
@@ -107,6 +109,7 @@ public class ProductBatchController {
 
     @RequestMapping(value = "/deleteProductBatch", method = RequestMethod.POST)
     public String deleteProductBatch(@ModelAttribute(name = "deleteProductBatch") ProductBatchEntry deleteProductBatch, Model model) {
+
         String message;
         System.out.println("Product Batch ID:" + deleteProductBatch.batchId);
         Optional<ProductBatchEntry> test = productBatchRepository.findById(deleteProductBatch.getBatchId());
@@ -117,7 +120,6 @@ public class ProductBatchController {
             message = "Product Batch of batch ID: " + deleteProductBatch.batchId + " was successfully deleted";
             model.addAttribute("message", message);
         }
-
         return "redirect:/productBatch";
 
     }

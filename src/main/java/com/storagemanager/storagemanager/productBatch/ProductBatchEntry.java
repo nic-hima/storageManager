@@ -65,11 +65,13 @@ public class ProductBatchEntry {
         this.productSku = productSku;
     }
 
+
     public Long getBatchId() {
         return batchId;
     }
 
     public void setBatchId(Long batchId) {
+
         this.batchId = batchId;
     }
     @Override

@@ -4,6 +4,7 @@
   <title>Transaction</title>
   <link th:href="@{css/style.css}" rel="stylesheet" media="screen"/>
 </head>
+
 <body>
 <div class="container">
   <div th:if="${not #lists.isEmpty(listOfAllProducts)}">
@@ -28,6 +29,7 @@
     </table>
   </div>
 </div>
+
 <h2>Create Transaction</h2>
 <form action="#" th:action="@{/transaction}" th:object="${newTransaction}" method="post">
   <p>SKU: <input type="text" th:field="*{sku}" /></p>
