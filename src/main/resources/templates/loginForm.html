@@ -2,15 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>LoginForm</title>
+    <link th:href="@{css/loginsheet.css}" rel="stylesheet" media="screen"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <h1 th:text = "${message}">Login</h1>
+    <h1 align="center" id="header">Storage Manager Login</h1>
 </head>
 <body>
 
     <form  method="post" action="/loginForm">
-        <p>Username: <input type="text" name="username" /></p>
-        <p>Password: <input type="text" name="password" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        <p><input type="text" placeholder="Username" name="username" /></p>
+        <p><input type="text" placeholder="Password" name="password" /></p>
+        <p><input type="submit" value="Submit" id="loginButton" /> <input type="reset" value="Reset" id="loginButton" /></p>
     </form>
 
 </body>

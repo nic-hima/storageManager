@@ -1,9 +1,6 @@
 package com.storagemanager.storagemanager.storageTransaction;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -14,14 +11,14 @@ import java.util.Date;
  *
  */
 @Entity
-@Table(name = "TRANSACTION")
+@Table(name = "transaction")
 public class StorageTransaction {
+    @Id @GeneratedValue
+    Long transactionID;
     @Column(name = "TYPE")
-    char type;
-
-    @Id
+    boolean type;
     @Column(name = "SKU")
-    long sku;
+    Long sku;
     @Column(name = "QUANTITY")
     int quantity;
     @Column(name = "TRANS_DATE")
@@ -29,19 +26,19 @@ public class StorageTransaction {
 
     protected StorageTransaction() {}
 
-    public char getType() {
+    public boolean getType() {
         return type;
     }
 
-    public void setType(char type) {
+    public void setType(boolean type) {
         this.type = type;
     }
 
-    public long getSku() {
+    public Long getSku() {
         return sku;
     }
 
-    public void setSku(long sku) {
+    public void setSku(Long sku) {
         this.sku = sku;
     }
 

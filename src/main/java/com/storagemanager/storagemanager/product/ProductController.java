@@ -37,25 +37,6 @@ public class ProductController {
     }
 
 
-/*    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String hello(HttpServletRequest request, Model model)
-    {
-        String name = request.getParameter("name");
-        System.out.println(name);
-
-        if (name == "" || name == null)
-        {
-            name = "hello world";
-        }
-
-        model.addAttribute("message", name);
-        return "notification";
-    }*/
-
-
-
-
-
     @PostMapping
     @Transactional
     public String createProduct(@ModelAttribute(name = "product") Product newProduct, @ModelAttribute(name = "deleteProduct") Product deleteProduct, Model model) {
@@ -66,36 +47,28 @@ public class ProductController {
             model.addAttribute("message", output);
             return "notification";
         }
+        Optional<Product> test = productRepository.findById(newProduct.sku);
+        if(test.isPresent()) {
+            System.out.println("Product is present" + test.toString());
+            return "redirect:/products";
+        }
         System.out.print(newProduct.toString() + " saved successfully\n");
         productRepository.save(newProduct);
         System.out.println("Total number of saved products: " + productRepository.count());
         List<Product> productList = productRepository.findAll();
         model.addAttribute("listOfAllProducts", productRepository.findAll());
         model.addAttribute("product", new Product());
-        /*Optional<Product> test = productRepository.findById((Long)newProduct.getSku());
-        if(test.isPresent() ) {
-            System.out.println("Product is present" + test.toString());
-        }*/
         return "products";
 
    }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String deleteProduct(@ModelAttribute(name = "deleteProduct") Product deleteProduct, @ModelAttribute(name = "product") Product newProduct, Model model) {
-        String message;
         Optional<Product> test = productRepository.findById(deleteProduct.sku);
         if(test.isPresent() ) {
             System.out.println("Product is present" + test.toString());
             productRepository.deleteById(deleteProduct.sku);
-            message = "Product of SKU: " + deleteProduct.sku + " was successfully deleted";
-            model.addAttribute("message", message);
-            return "products";
         }
-        message = "Product of SKU: " + deleteProduct.sku + " was not found";
-        model.addAttribute("message", message);
-        return "products";
-
+        return "redirect:/products";
     }
 }
-
-

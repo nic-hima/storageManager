@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Transaction</title>
+  <link th:href="@{css/style.css}" rel="stylesheet" media="screen"/>
+</head>
+<h2>Create Transaction</h2>
+<form action="#" th:action="@{/transaction}" th:object="${newTransaction}" method="post">
+  <p>SKU: <input type="text" th:field="*{sku}" /></p>
+  <p>Quantity: <input type="text" th:field="*{quantity}" /></p>
+  <p>Transaction Date: <input type="text" th:field="*{transactionDate}" /></p>
+  <p>Order Type: (Checked if sending, not checked if receiving)<input type="checkbox" th:field="*{type}"/></p>
+  <input type="submit" value="Submit">
+</form>
+<form action="#" th:action="@{/landing}" method="get">
+  <button type="submit" >Back</button>
+</form>
+</body>
+</html>

@@ -45,8 +45,6 @@ public class StorageManagerController {
             model.addAttribute("message", response);
             return "loginForm";
         }
-        response = "success";
-        model.addAttribute("message", response);
         return "portalLanding";
     }
 
