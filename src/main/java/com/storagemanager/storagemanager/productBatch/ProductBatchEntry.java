@@ -72,7 +72,6 @@ public class ProductBatchEntry {
     public void setBatchId(long batchId) {
         this.batchId = batchId;
     }
-
     @Override
     public String toString() {
         return "ProductBatchEntry{" +
