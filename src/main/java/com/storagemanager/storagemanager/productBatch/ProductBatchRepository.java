@@ -8,4 +8,6 @@ public interface ProductBatchRepository extends CrudRepository<ProductBatchEntry
 
     List<ProductBatchEntry> findAll();
     List<ProductBatchEntry> findByproductSku(int productSku);
+    List<ProductBatchEntry> findBybatchId(Long batchId);
+
 }

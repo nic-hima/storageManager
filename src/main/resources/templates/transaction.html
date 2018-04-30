@@ -4,6 +4,32 @@
   <title>Transaction</title>
   <link th:href="@{css/style.css}" rel="stylesheet" media="screen"/>
 </head>
+
+<body>
+<div class="container">
+  <div th:if="${not #lists.isEmpty(listOfAllProducts)}">
+    <h1>Product List</h1>
+    <table>
+      <tr>
+        <th>SKU</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>WholeSale</th>
+        <th>SalePrice</th>
+      </tr>
+      <tr th:each="product : ${listOfAllProducts}">
+        <td th:text="${product.sku}">SKU </td>
+        <td th:text="${product.name}">Name</td>
+        <td th:text="${product.description}">Description</td>
+        <td th:text="${product.category}">Category</td>
+        <td th:text="${product.wholeSaleCost}">wholeSaleCost</td>
+        <td th:text="${product.salePrice}">salePrice</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
 <h2>Create Transaction</h2>
 <form action="#" th:action="@{/transaction}" th:object="${newTransaction}" method="post">
   <p>SKU: <input type="text" th:field="*{sku}" /></p>

@@ -11,7 +11,7 @@ import java.util.Date;
 public class ProductBatchEntry {
 
     @Id @GeneratedValue
-    long batchId;
+    Long batchId;
     @Column(name = "PRODUCTSKU")
     int productSku;
     @Column(name = "QUANTITY")
@@ -65,11 +65,13 @@ public class ProductBatchEntry {
         this.productSku = productSku;
     }
 
-    public long getBatchId() {
+
+    public Long getBatchId() {
         return batchId;
     }
 
-    public void setBatchId(long batchId) {
+    public void setBatchId(Long batchId) {
+
         this.batchId = batchId;
     }
     @Override
