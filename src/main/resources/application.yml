@@ -2,6 +2,7 @@
 #So far no security feature has been implemented -NHima 4/23
 #
 spring:
+
   datasource:
     initialize: false
     url: jdbc:mysql://db:3306/spring

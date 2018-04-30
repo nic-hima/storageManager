@@ -1,8 +1,5 @@
 package com.storagemanager.storagemanager.productBatch;
 
-
-import jdk.Exported;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,7 +13,7 @@ public class ProductBatchEntry {
     @Id @GeneratedValue
     long batchId;
     @Column(name = "PRODUCTSKU")
-    long productSku;
+    int productSku;
     @Column(name = "QUANTITY")
     int quantity;
     @Column(name = "LOCATION")
@@ -24,7 +21,7 @@ public class ProductBatchEntry {
     @Column(name = "DATERECEIVED")
     Date dateReceived;
     @Column(name = "PERISHABLE")
-    boolean perishable;
+    boolean perishable = true;
 
     protected ProductBatchEntry() {}
 
@@ -60,7 +57,7 @@ public class ProductBatchEntry {
         this.perishable = perishable;
     }
 
-    public long getProductSku() {
+    public int getProductSku() {
         return productSku;
     }
 
@@ -68,4 +65,15 @@ public class ProductBatchEntry {
         this.productSku = productSku;
     }
 
+    @Override
+    public String toString() {
+        return "ProductBatchEntry{" +
+                "batchId=" + batchId +
+                ", productSku=" + productSku +
+                ", quantity=" + quantity +
+                ", location='" + location + '\'' +
+                ", dateReceived=" + dateReceived +
+                ", perishable=" + perishable +
+                '}';
+    }
 }
