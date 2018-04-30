@@ -3,9 +3,11 @@
 <head>
 
     <title>Landing</title>
+    <link th:href="@{css/style.css}" rel="stylesheet" media="screen"/>
+
 </head>
     <body>
-        <h1 th:text = "${message}"></h1>
+        <h1>Welcome to the Manager Portal!</h1>
         <form action="#" th:action="@{/}" method="get">
             <button type="submit" >Logout</button>
         </form>

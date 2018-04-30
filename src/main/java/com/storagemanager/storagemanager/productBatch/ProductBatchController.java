@@ -38,6 +38,7 @@ public class ProductBatchController {
     @PostMapping
     @Transactional
     public String createProductBatch(@ModelAttribute(name = "newProductBatch") ProductBatchEntry newProductBatch, @ModelAttribute(name = "deleteProductBatch") ProductBatchEntry deleteProductBatch, Model model) {
+        String message;
         System.out.println(newProductBatch.toString());
         if (1==0)
         {

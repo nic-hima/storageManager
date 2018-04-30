@@ -47,16 +47,17 @@ public class ProductController {
             model.addAttribute("message", output);
             return "notification";
         }
+        Optional<Product> test = productRepository.findById(newProduct.sku);
+        if(test.isPresent()) {
+            System.out.println("Product is present" + test.toString());
+            return "redirect:/products";
+        }
         System.out.print(newProduct.toString() + " saved successfully\n");
         productRepository.save(newProduct);
         System.out.println("Total number of saved products: " + productRepository.count());
         List<Product> productList = productRepository.findAll();
         model.addAttribute("listOfAllProducts", productRepository.findAll());
         model.addAttribute("product", new Product());
-        /*Optional<Product> test = productRepository.findById((Long)newProduct.getSku());
-        if(test.isPresent() ) {
-            System.out.println("Product is present" + test.toString());
-        }*/
         return "products";
 
    }
@@ -71,5 +72,3 @@ public class ProductController {
         return "redirect:/products";
     }
 }
-
-
