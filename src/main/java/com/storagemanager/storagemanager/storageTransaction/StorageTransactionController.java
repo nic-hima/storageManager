@@ -3,11 +3,9 @@ package com.storagemanager.storagemanager.storageTransaction;
 import com.storagemanager.storagemanager.productBatch.ProductBatchEntry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,7 +31,6 @@ public class StorageTransactionController {
         }
         model.addAttribute("listOfAllTransactions", storageTransactionRepository.findAll());
         model.addAttribute("newTransaction", new StorageTransaction());
-        model.addAttribute("deleteTransaction", new StorageTransaction());
         return "transaction";
     }
 
@@ -44,6 +41,26 @@ public class StorageTransactionController {
         Iterable<StorageTransaction> transactions = null;
         transactions = storageTransactionRepository.findAllById(skuList);
         return transactions;
+    }
+
+    @PostMapping
+    @Transactional
+    public String createTransaction(@ModelAttribute(name = "newTransaction") StorageTransaction newTransaction, Model model) {
+        String message;
+        System.out.println(newTransaction.toString());
+        if (1==0)
+        {
+            String output = "Invalid Form";
+            System.out.print("Validation errors while submitting form");
+            model.addAttribute("message", output);
+            return "notification";
+        }
+        System.out.print(newTransaction.toString() + " saved successfully\n");
+        storageTransactionRepository.save(newTransaction);
+        System.out.println("Total number of Transactions: " + storageTransactionRepository.count());
+        List<StorageTransaction> productList = storageTransactionRepository.findAll();
+
+        return "redirect:/transaction";
     }
 }
 

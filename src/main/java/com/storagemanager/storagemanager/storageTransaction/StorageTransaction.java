@@ -57,4 +57,15 @@ public class StorageTransaction {
     public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
     }
+
+    @Override
+    public String toString() {
+        return "StorageTransaction{" +
+                "transactionID=" + transactionID +
+                ", type=" + type +
+                ", sku=" + sku +
+                ", quantity=" + quantity +
+                ", transactionDate=" + transactionDate +
+                '}';
+    }
 }
