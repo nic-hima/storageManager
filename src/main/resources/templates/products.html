@@ -4,12 +4,11 @@
     <title>Products</title>
     <link th:href="@{css/style.css}" rel="stylesheet" media="screen"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <h1 th:text = "${message}">Products</h1>
+    <h1 align="center">Product List</h1>
 </head>
 <body>
 <div class="container">
     <div th:if="${not #lists.isEmpty(listOfAllProducts)}">
-        <h1>Product List</h1>
         <table>
             <tr>
                 <th>SKU</th>
@@ -30,12 +29,14 @@
         </table>
     </div>
 </div>
-<h2>Delete Product Form</h2>
+<hr>
+<h2 align="center">Delete Product Form</h2>
 <form  action="#" th:action="@{/products/delete}" th:object="${deleteProduct}" method="post">
     <p>SKU: <input type="text" th:field="*{sku}" /></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
-<h2>New Product Form</h2>
+<hr>
+<h2 align="center">New Product Form</h2>
 <form action="#" th:action="@{/products}" th:object="${product}" method="post">
     <p>SKU: <input type="text" th:field="*{sku}" /></p>
     <p>Name: <input type="text" th:field="*{name}" /></p>
@@ -46,7 +47,7 @@
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
 <form action="#" th:action="@{/landing}" method="get">
-    <button type="submit" >Back</button>
+    <button type="submit" id="hButton" >Back</button>
 </form>
 </body>
 </html>
