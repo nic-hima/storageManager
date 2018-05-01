@@ -18,7 +18,7 @@
                 <th>Quantity</th>
                 <th>Location</th>
                 <th>Perishable?</th>
-                <th>DateRecvd</th>
+                <th>ReceiveDate</th>
 
             </tr>
             <tr th:each="productBatch : ${listOfAllProductBatch}">
@@ -28,7 +28,7 @@
                 <td th:text="${productBatch.quantity}">Quantity</td>
                 <td th:text="${productBatch.location}">Location</td>
                 <td th:text="${productBatch.perishable}">Perishable</td>
-                <td th:text="${productBatch.dateReceived}">DateRecvd</td>
+                <td th:text="${#dates.format(productBatch.dateReceived, 'MM-dd-yyyy')}">DateRecvd</td>
             </tr>
         </table>
     </div>

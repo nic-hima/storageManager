@@ -21,7 +21,7 @@
         <td th:text="${transaction.transactionID}">Transaction ID</td>
         <td th:text="${transaction.sku}">SKU</td>
         <td th:text="${transaction.quantity}">Quantity</td>
-        <td th:text="${transaction.transactionDate}">Date</td>
+        <td th:text="${#dates.format(transaction.transactionDate, 'MM-dd-yyyy')}">Date</td>
         <td th:text="${transaction.typeResult}">Type</td>
       </tr>
     </table>
