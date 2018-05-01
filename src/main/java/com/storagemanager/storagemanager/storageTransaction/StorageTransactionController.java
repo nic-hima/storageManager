@@ -47,16 +47,11 @@ public class StorageTransactionController {
     @PostMapping
     @Transactional
     public String createTransaction(@ModelAttribute(name = "newTransaction") StorageTransaction newTransaction, Model model) {
-        String message;
-        System.out.println(newTransaction.toString());
-        if (1==0)
-        {
-            String output = "Invalid Form";
-            System.out.print("Validation errors while submitting form");
-            model.addAttribute("message", output);
-            return "notification";
-        }
-        System.out.print(newTransaction.toString() + " saved successfully\n");
+        if(newTransaction.type == true)
+            newTransaction.setTypeResult("OUT");
+        else
+            newTransaction.setTypeResult("IN");
+
         storageTransactionRepository.save(newTransaction);
         System.out.println("Total number of Transactions: " + storageTransactionRepository.count());
         List<StorageTransaction> productList = storageTransactionRepository.findAll();

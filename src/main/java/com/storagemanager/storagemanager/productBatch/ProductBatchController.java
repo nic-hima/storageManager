@@ -46,16 +46,6 @@ public class ProductBatchController {
     @Transactional
 
     public String createProductBatch(@ModelAttribute(name = "newProductBatch") ProductBatchEntry newProductBatch,  Model model) {
-        String message;
-        System.out.println(newProductBatch.toString());
-        if (1==0)
-        {
-            String output = "Invalid Form";
-            System.out.print("Validation errors while submitting form");
-            model.addAttribute("message", output);
-            return "notification";
-        }
-
         Optional<Product> test = productRepository.findById(newProductBatch.getProductSku());
         if(test.isPresent()) {
             List<Product> temp = productRepository.findBysku(newProductBatch.getProductSku());
