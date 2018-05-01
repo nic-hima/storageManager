@@ -1,3 +1,7 @@
+/*
+By Nicholas Fritz
+*/
+
 body {
      background: rgb(34,161,195);
      background: linear-gradient(322deg, rgba(34,161,195,1) 0%, rgba(45,99,253,1) 100%);
@@ -9,99 +13,64 @@ body {
 
 p {
     font-family: verdana;
-    font-size: 20px;
+    font-size: 12px;
     color: white;
     text-align: center;
 }
 input[type=text], input[type=password] {
-    padding: 12px 20px;
-    margin: 8px 0;
+    padding: 3px 3px;
+    margin: 3px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 
 }
-button {
+button, input[type=button], input[type=submit], input[type=reset] {
     background-color: #4083ef;
     color: white;
-    padding: 14px 20px;
+    padding: 10px 10px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
+    background-color : transparent;
+    color: white;
+    font-size: 14px;
 }
 button:hover {
     opacity: 0.8;
 }
 div.container {
-  width: 250px;
-  height: 300px;
+ /* width: 250px;
+  height: 300px;*/
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 50px;
  }
-
-button{
-    /*background-color: #4083ef;*/
-    background-color : transparent;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    font-size: 27px;
-}
-button {
-    opacity: .5;
-}
 
 form {
   position: relative;
   z-index: 1;
- /* background: #FFFFFF;*/
   background: transparent;
-  max-width: 360px;
-  margin: -70px auto 100px;
-  padding: 45px;
+  max-width: 200px;
+  margin: 0px auto 10px;
+  padding: 0px;
   text-align: center;
- /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
+  font-size: 12px;
 }
-form input {
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
-h1{
-  font-size: 60px;
+h1, h2{
+  font-size: 30px;
   color:white;
   text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
              0px 8px 13px rgba(0,0,0,0.1),
              0px 18px 23px rgba(0,0,0,0.1);
-
-}
-
-h2{
-  font-size: 60px;
-  color:white;
-  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-             0px 8px 13px rgba(0,0,0,0.1),
-             0px 18px 23px rgba(0,0,0,0.1);
-
-
 
 }
 table {
    background-color: white;
-   margin-left:auto;
+   margin-left: auto;
    margin-right:auto;
-   width:700px;
+    width: 700px;
 }
 th {
     text-align: left;

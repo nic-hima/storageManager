@@ -6,9 +6,9 @@
 </head>
 
 <body>
+<h1 style ="test-align:center" align="center">Transaction List</h1>
 <div class="container">
   <div th:if="${not #lists.isEmpty(listOfAllTransactions)}">
-    <h1>Transaction List</h1>
     <table>
       <tr>
         <th>Transaction ID</th>
@@ -27,7 +27,8 @@
     </table>
   </div>
 </div>
-<h2>Create Transaction</h2>
+<hr>
+<h2 align="center">Create Transaction</h2>
 <form action="#" th:action="@{/transaction}" th:object="${newTransaction}" method="post">
   <p>SKU: <input type="text" th:field="*{sku}" /></p>
   <p>Quantity: <input type="text" th:field="*{quantity}" /></p>
