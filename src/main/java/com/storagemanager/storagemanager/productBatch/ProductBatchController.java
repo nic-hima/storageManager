@@ -1,5 +1,6 @@
 package com.storagemanager.storagemanager.productBatch;
 import com.storagemanager.storagemanager.product.Product;
+import com.storagemanager.storagemanager.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -21,6 +22,8 @@ public class ProductBatchController {
 
     @Autowired
     ProductBatchRepository productBatchRepository;
+    @Autowired
+    ProductRepository productRepository;
 
     @GetMapping
     public String returnProductBatch(Model model)
@@ -30,7 +33,7 @@ public class ProductBatchController {
             System.out.println(iteration.toString());
 
         }
-        model.addAttribute("listOfAllProduct", productBatchRepository.findAll());
+        model.addAttribute("listOfAllProductBatch", productBatchRepository.findAll());
         model.addAttribute("newProductBatch", new ProductBatchEntry());
         model.addAttribute("deleteProductBatch", new ProductBatchEntry());
         model.addAttribute("updateLocation", new ProductBatchEntry());
@@ -52,9 +55,16 @@ public class ProductBatchController {
             model.addAttribute("message", output);
             return "notification";
         }
-        System.out.print(newProductBatch.toString() + " saved successfully\n");
-        productBatchRepository.save(newProductBatch);
-        System.out.println("Total number of saved products: " + productBatchRepository.count());
+
+        Optional<Product> test = productRepository.findById(newProductBatch.getProductSku());
+        if(test.isPresent()) {
+            List<Product> temp = productRepository.findBysku(newProductBatch.getProductSku());
+            Product l = temp.get(0);
+            newProductBatch.setName(l.getName());
+            productBatchRepository.save(newProductBatch);
+            System.out.print(newProductBatch.toString() + " saved successfully\n");
+            System.out.println("Total number of saved products: " + productBatchRepository.count());
+        }
         List<ProductBatchEntry> productList = productBatchRepository.findAll();
         model.addAttribute("listOfAllProductBatches", productBatchRepository.findAll());
         model.addAttribute("newProductBatch", new ProductBatchEntry());

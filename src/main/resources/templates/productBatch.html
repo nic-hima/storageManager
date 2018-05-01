@@ -7,6 +7,31 @@
     <h1 th:text = "${message}">Product Batch</h1>
 </head>
 <body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(listOfAllProductBatch)}">
+        <h1>Product Batch List</h1>
+        <table>
+            <tr>
+                <th>BatchID</th>
+                <th>SKU</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Location</th>
+                <th>Perishable?</th>
+                <th>DateRecvd</th>
+
+            </tr>
+            <tr th:each="productBatch : ${listOfAllProductBatch}">
+                <td th:text="${productBatch.batchId}">BatchID </td>
+                <td th:text="${productBatch.productSku}">SKU</td>
+                <td th:text="${productBatch.name}">Name</td>
+                <td th:text="${productBatch.quantity}">Quantity</td>
+                <td th:text="${productBatch.location}">Location</td>
+                <td th:text="${productBatch.perishable}">Perishable</td>
+                <td th:text="${productBatch.dateReceived}">DateRecvd</td>
+            </tr>
+        </table>
+    </div>
 
 <h2>Delete Product Batch Form</h2>
 <form  action="#" th:action="@{/productBatch/deleteProductBatch}" th:object="${deleteProductBatch}" method="post">

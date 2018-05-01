@@ -4,8 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,10 +53,7 @@ public class ProductController {
         System.out.print(newProduct.toString() + " saved successfully\n");
         productRepository.save(newProduct);
         System.out.println("Total number of saved products: " + productRepository.count());
-        List<Product> productList = productRepository.findAll();
-        model.addAttribute("listOfAllProducts", productRepository.findAll());
-        model.addAttribute("product", new Product());
-        return "products";
+        return "redirect:/products";
 
    }
 

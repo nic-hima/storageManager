@@ -13,7 +13,7 @@ public class ProductBatchEntry {
     @Id @GeneratedValue
     Long batchId;
     @Column(name = "PRODUCTSKU")
-    int productSku;
+    Long productSku;
     @Column(name = "QUANTITY")
     int quantity;
     @Column(name = "LOCATION")
@@ -22,6 +22,8 @@ public class ProductBatchEntry {
     Date dateReceived;
     @Column(name = "PERISHABLE")
     boolean perishable = true;
+    @Column(name = "NAME")
+    String name;
 
     protected ProductBatchEntry() {}
 
@@ -57,11 +59,11 @@ public class ProductBatchEntry {
         this.perishable = perishable;
     }
 
-    public int getProductSku() {
+    public Long getProductSku() {
         return productSku;
     }
 
-    public void setProductSku(int productSku) {
+    public void setProductSku(Long productSku) {
         this.productSku = productSku;
     }
 
@@ -83,6 +85,15 @@ public class ProductBatchEntry {
                 ", location='" + location + '\'' +
                 ", dateReceived=" + dateReceived +
                 ", perishable=" + perishable +
+                ", Name=" + name +
                 '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

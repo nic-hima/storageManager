@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 
 public class StorageManagerController {
 
-    //@Autowired
-    //StorageManagerRepository storageManagerRepository;
+    @Autowired
+    StorageManagerRepository storageManagerRepository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String loginForm(Model model)
