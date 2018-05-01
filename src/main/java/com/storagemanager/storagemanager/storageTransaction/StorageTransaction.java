@@ -16,13 +16,35 @@ public class StorageTransaction {
     @Id @GeneratedValue
     Long transactionID;
     @Column(name = "TYPE")
-    boolean type;
+    boolean type = true;
     @Column(name = "SKU")
     Long sku;
     @Column(name = "QUANTITY")
     int quantity;
     @Column(name = "TRANS_DATE")
     Date transactionDate;
+    @Column(name = "TRANS_TYPE_RESULT")
+    String typeResult;
+
+    public Long getTransactionID() {
+        return transactionID;
+    }
+
+    public void setTransactionID(Long transactionID) {
+        this.transactionID = transactionID;
+    }
+
+    public boolean isType() {
+        return type;
+    }
+
+    public String getTypeResult() {
+        return typeResult;
+    }
+
+    public void setTypeResult(String typeResult) {
+        this.typeResult = typeResult;
+    }
 
     protected StorageTransaction() {}
 
