@@ -18,5 +18,51 @@
         <form action="#" th:action="@{/}" method="get">
             <button type="submit" >Logout</button>
         </form>
+        <hr>
+        <div class="container">
+
+        <div th:if="${not #lists.isEmpty(listOfAllExpiringProductBatch)}">
+        <h1 align="center">Batch Expiration Warning</h1>
+        <table>
+            <tr>
+                <th>BatchID</th>
+                <th>SKU</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Location</th>
+                <th>Expiration Date</th>
+
+            </tr>
+            <tr th:each="productBatch : ${listOfAllExpiringProductBatch}">
+                <td th:text="${productBatch.batchId}">BatchID </td>
+                <td th:text="${productBatch.productSku}">SKU</td>
+                <td th:text="${productBatch.name}">Name</td>
+                <td th:text="${productBatch.quantity}">Quantity</td>
+                <td th:text="${productBatch.location}">Location</td>
+                <td th:text="${#dates.format(productBatch.dateReceived, 'MM-dd-yyyy')}">DateExpire</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(listOfAllLowProductBatch)}">
+        <h1 align="center">Product Quantity Low</h1>
+        <table>
+            <tr>
+                <th>SKU</th>
+                <th>Name</th>
+                <th>Quantity</th>
+
+
+            </tr>
+            <tr th:each="productBatch : ${listOfAllLowProductBatch}">
+                <td th:text="${productBatch.productSku}">SKU</td>
+                <td th:text="${productBatch.name}">Name</td>
+                <td th:text="${productBatch.quantity}">Quantity</td>
+            </tr>
+        </table>
+    </div>
+</div>
     </body>
 </html>

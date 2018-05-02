@@ -55,7 +55,6 @@ public class ProductBatchController {
             System.out.print(newProductBatch.toString() + " saved successfully\n");
             System.out.println("Total number of saved products: " + productBatchRepository.count());
         }
-        List<ProductBatchEntry> productList = productBatchRepository.findAll();
         model.addAttribute("listOfAllProductBatches", productBatchRepository.findAll());
         model.addAttribute("newProductBatch", new ProductBatchEntry());
         model.addAttribute("deleteProductBatch", new ProductBatchEntry());

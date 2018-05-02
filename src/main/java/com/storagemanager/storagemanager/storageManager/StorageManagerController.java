@@ -1,5 +1,9 @@
 package com.storagemanager.storagemanager.storageManager;
 
+import com.storagemanager.storagemanager.product.Product;
+import com.storagemanager.storagemanager.product.ProductRepository;
+import com.storagemanager.storagemanager.productBatch.ProductBatchEntry;
+import com.storagemanager.storagemanager.productBatch.ProductBatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.*;
 
 /**
  * Created by NHima on 4/24/18.
@@ -23,6 +26,12 @@ public class StorageManagerController {
 
     @Autowired
     StorageManagerRepository storageManagerRepository;
+
+    @Autowired
+    ProductBatchRepository productBatchRepository;
+
+    @Autowired
+    ProductRepository productRepository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String loginForm(Model model)
@@ -78,7 +87,55 @@ public class StorageManagerController {
     @RequestMapping(value = "/landing", method = RequestMethod.GET)
     public String gotoLanding(Model model)
     {
-        System.out.println("hello");
+        List<ProductBatchEntry> allBE = new ArrayList<ProductBatchEntry>();
+        List<Product> allP = new ArrayList<Product>();
+        allBE = productBatchRepository.findAll();
+        allP = productRepository.findAll();
+
+        Calendar now =Calendar.getInstance();
+        Calendar check =Calendar.getInstance();
+        System.out.println(now.getTime());
+        List<ProductBatchEntry> warning = new ArrayList<ProductBatchEntry>();
+        List<ProductBatchEntry> quantity = new ArrayList<ProductBatchEntry>();
+        if(!(allBE.isEmpty())) {
+            for (ProductBatchEntry current : allBE) {
+                List<Product> tempP = productRepository.findBysku(current.getProductSku());
+                Product l = tempP.get(0);
+                if (l.isPerishable()) {
+                    check.setTime(current.getDateReceived());
+                    System.out.println(current.getName() + " was received " + check.getTime());
+                    check.add(Calendar.DATE, 5);
+                    System.out.println(current.getName() + " should have a warning on " + check.getTime());
+                    if (now.getTime().compareTo(check.getTime()) > 0) {
+                        System.out.println("Add to List");
+                        check.add(Calendar.DATE, 2);
+                        current.setDateReceived(check.getTime());
+                        warning.add(current);
+                    }
+
+                }
+            }
+        }
+        if(!(allP.isEmpty())) {
+            for (Product current : allP) {
+                List<ProductBatchEntry> tempBE = productBatchRepository.findByproductSku(current.getSku());
+                int iQuantity = 0;
+                if (!tempBE.isEmpty()) {
+                    for (ProductBatchEntry curr : tempBE) {
+                        iQuantity = curr.getQuantity();
+                    }
+                    if (iQuantity <= 5) {
+                        List<ProductBatchEntry> qLow = productBatchRepository.findByproductSku(current.getSku());
+                        ProductBatchEntry l = qLow.get(0);
+                        l.setQuantity(iQuantity);
+                        quantity.add(l);
+                    }
+                }
+            }
+        }
+
+        model.addAttribute("listOfAllLowProductBatch", quantity);
+        model.addAttribute("listOfAllExpiringProductBatch", warning);
         return "portalLanding";
     }
 
