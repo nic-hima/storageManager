@@ -17,7 +17,6 @@
                 <th>Name</th>
                 <th>Quantity</th>
                 <th>Location</th>
-                <th>Perishable?</th>
                 <th>ReceiveDate</th>
 
             </tr>
@@ -27,7 +26,6 @@
                 <td th:text="${productBatch.name}">Name</td>
                 <td th:text="${productBatch.quantity}">Quantity</td>
                 <td th:text="${productBatch.location}">Location</td>
-                <td th:text="${productBatch.perishable}">Perishable</td>
                 <td th:text="${#dates.format(productBatch.dateReceived, 'MM-dd-yyyy')}">DateRecvd</td>
             </tr>
         </table>
@@ -46,7 +44,6 @@
     <p>Quantity: <input type="text" th:field="*{quantity}" /></p>
     <p>Location: <input type="text" th:field="*{location}" /></p>
     <p>Date Received: <input type="text" th:field="*{dateReceived}" /></p>
-    <p>Perishable: <input type="checkbox" th:field="*{perishable}"/></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
 <hr>

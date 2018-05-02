@@ -17,6 +17,7 @@
                 <th>Category</th>
                 <th>WholeSale</th>
                 <th>SalePrice</th>
+                <th>Perishable?</th>
             </tr>
             <tr th:each="product : ${listOfAllProducts}">
             <td th:text="${product.sku}">SKU </td>
@@ -25,6 +26,7 @@
             <td th:text="${product.category}">Category</td>
             <td th:text="${product.wholeSaleCost}">wholeSaleCost</td>
             <td th:text="${product.salePrice}">salePrice</td>
+            <td th:text="${product.perishable}">Perishable</td>
             </tr>
         </table>
     </div>
@@ -44,6 +46,7 @@
     <p>Category: <input type="text" th:field="*{category}" /></p>
     <p>WholeSaleCost: <input type="text" th:field="*{wholeSaleCost}" /></p>
     <p>SalePrice: <input type="text" th:field="*{salePrice}" /></p>
+    <p>Perishable: <input type="checkbox" th:field="*{perishable}"/></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
 <form action="#" th:action="@{/landing}" method="get">

@@ -34,7 +34,16 @@ public class Product {
     double wholeSaleCost;
     @Column(name = "CATEGORY")
     String category;
+    @Column(name = "PERISHABLE")
+    boolean perishable = true;
 
+    public boolean isPerishable() {
+        return perishable;
+    }
+
+    public void setPerishable(boolean perishable) {
+        this.perishable = perishable;
+    }
 
     protected Product() {}
 
@@ -95,6 +104,7 @@ public class Product {
                 ", salePrice=" + salePrice +
                 ", wholeSaleCost=" + wholeSaleCost +
                 ", category='" + category + '\'' +
+                ", perishable='" + perishable + '\'' +
                 '}';
     }
 }

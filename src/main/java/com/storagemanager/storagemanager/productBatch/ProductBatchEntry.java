@@ -20,8 +20,6 @@ public class ProductBatchEntry {
     String location;
     @Column(name = "DATERECEIVED")
     Date dateReceived;
-    @Column(name = "PERISHABLE")
-    boolean perishable = true;
     @Column(name = "NAME")
     String name;
 
@@ -51,14 +49,6 @@ public class ProductBatchEntry {
         this.dateReceived = dateReceived;
     }
 
-    public boolean isPerishable() {
-        return perishable;
-    }
-
-    public void setPerishable(boolean perishable) {
-        this.perishable = perishable;
-    }
-
     public Long getProductSku() {
         return productSku;
     }
@@ -84,7 +74,6 @@ public class ProductBatchEntry {
                 ", quantity=" + quantity +
                 ", location='" + location + '\'' +
                 ", dateReceived=" + dateReceived +
-                ", perishable=" + perishable +
                 ", Name=" + name +
                 '}';
     }
